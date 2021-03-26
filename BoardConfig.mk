@@ -80,7 +80,7 @@ BOARD_KERNEL_CMDLINE := \
     reboot=panic_warm \
     firmware_class.path=/vendor/firmware_mnt/image
 # For the love of all that is holy, please do not include this in your ROM unless you really want TWRP to not work correctly!
-BOARD_KERNEL_CMDLINE += androidboot.fastboot=1
+BOARD_KERNEL_CMDLINE += androidboot.fastboot=1 twrpfastboot=1
 BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 
 BOARD_BOOT_HEADER_VERSION := 2
@@ -230,4 +230,3 @@ BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
 TARGET_COPY_OUT_VENDOR := vendor
 TARGET_COPY_OUT_PRODUCT := product
 TARGET_COPY_OUT_SYSTEM_EXT := system_ext
-
