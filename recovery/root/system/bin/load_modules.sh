@@ -39,6 +39,8 @@ load()
 load
 wait 1
 
+cat /proc/nvt_update
+
 setprop modules.loaded 1
 
 exit 0
