@@ -27,22 +27,7 @@
 
 import /init.recovery.qcom_decrypt.rc
 
-service unified-script /system/bin/unified-script.sh
-    user root
-    group root
-    disabled
-    oneshot
-    seclabel u:r:recovery:s0
-
-service mount-dynamic-rw /system/bin/mount-dynamic-rw.sh
-    user root
-    group root
-    disabled
-    oneshot
-    seclabel u:r:recovery:s0
-
 on init
-    write /sys/class/backlight/panel0-backlight/brightness 200
     start boot-hal-1-1
 
     # Create location for fs_mgr to store abbreviated output from filesystem
@@ -52,21 +37,19 @@ on init
 on boot
     setprop sys.usb.config adb
 
-    #chmod 0777 mount-dynamic-rw.sh
-    chmod 0777 /system/bin/unified-script.sh
-    start unified-script
-    #start mount-dynamic-rw
-
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
 
-    # This must be under on fs, otherwise update_engine wont map the partitions and exit installation
-    symlink /dev/block/bootdevice/by-name/oem_stanvbk /dev/block/bootdevice/by-name/oem_stanvbk_a
-    symlink /dev/block/bootdevice/by-name/oem_stanvbk /dev/block/bootdevice/by-name/oem_stanvbk_b
-    symlink /dev/block/bootdevice/by-name/oem_dycnvbk /dev/block/bootdevice/by-name/oem_dycnvbk_a
-    symlink /dev/block/bootdevice/by-name/oem_dycnvbk /dev/block/bootdevice/by-name/oem_dycnvbk_b
-
     # Set fscklog permission
     chown root system /dev/fscklogs/log
     chmod 0770 /dev/fscklogs/log
+    start load_ts_firmware
+
+service load_ts_firmware /vendor/bin/load_ts_firmware.sh
+    user root
+    group root
+    oneshot
+    disabled
+    seclabel u:r:recovery:s0
+

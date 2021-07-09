@@ -1,10 +1,7 @@
 # Inherit from common AOSP config
 $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 
-# Inherit from virtual AB OTA config
-$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
-
-LOCAL_PATH := device/oneplus/kebab
+LOCAL_PATH := device/motorola/nio
 
 # define hardware platform
 PRODUCT_PLATFORM := kona
@@ -17,11 +14,15 @@ AB_OTA_UPDATER := true
 # more partitions to this list for the bootloader and radio.
 AB_OTA_PARTITIONS += \
     boot \
+    dtbo \
+    product \
+    recovery \
     system \
     system_ext \
-    vendor \
     vbmeta \
-    dtbo
+    vbmeta_system \
+    vendor \
+    vendor_boot
 
 PRODUCT_PACKAGES += \
     otapreopt_script \
@@ -34,13 +35,13 @@ AB_OTA_POSTINSTALL_CONFIG += \
     POSTINSTALL_PATH_system=system/bin/otapreopt_script \
     FILESYSTEM_TYPE_system=ext4 \
     POSTINSTALL_OPTIONAL_system=true
-    
+
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_vendor=true \
     POSTINSTALL_PATH_vendor=bin/checkpoint_gc \
     FILESYSTEM_TYPE_vendor=ext4 \
     POSTINSTALL_OPTIONAL_vendor=true
-    
+
 # Userdata Checkpointing OTA GC
 PRODUCT_PACKAGES += \
     checkpoint_gc
@@ -52,11 +53,9 @@ PRODUCT_PACKAGES += \
 
 # Boot control HAL
 PRODUCT_PACKAGES += \
-    android.hardware.boot@1.0-impl \
-    android.hardware.boot@1.0-service \
-    android.hardware.boot@1.0-impl-wrapper.recovery \
-    android.hardware.boot@1.0-impl-wrapper \
-    android.hardware.boot@1.0-impl.recovery \
+    android.hardware.boot@1.1-impl-qti \
+    android.hardware.boot@1.1-impl-qti.recovery \
+    android.hardware.boot@1.1-service \
     bootctrl.$(PRODUCT_PLATFORM) \
     bootctrl.$(PRODUCT_PLATFORM).recovery \
 
@@ -88,5 +87,6 @@ PRODUCT_COPY_FILES += \
 
 #TWRP
 PRODUCT_COPY_FILES += \
-    device/oneplus/kebab/prebuilt/systemmanifest.xml:$(TARGET_COPY_OUT_RECOVERY)/root/system/manifest.xml \
-    device/oneplus/kebab/prebuilt/vendormanifest.xml:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/manifest.xml \
+    device/motorola/nio/prebuilt/systemmanifest.xml:$(TARGET_COPY_OUT_RECOVERY)/root/system/manifest.xml \
+    device/motorola/nio/prebuilt/vendormanifest.xml:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/manifest.xml \
+

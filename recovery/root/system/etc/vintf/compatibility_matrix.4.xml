@@ -254,19 +254,10 @@
     </hal>
     <hal format="hidl" optional="false">
         <name>android.hardware.keymaster</name>
-        <version>3.0</version>
-        <version>4.0</version>
+        <version>4.0-1</version>
         <interface>
             <name>IKeymasterDevice</name>
             <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>android.hardware.keymaster</name>
-        <version>4.0</version>
-        <interface>
-            <name>IKeymasterDevice</name>
-            <instance>strongbox</instance>
         </interface>
     </hal>
     <hal format="hidl" optional="true">
@@ -507,14 +498,6 @@
         <version>1.0-2</version>
         <interface>
             <name>ISupplicant</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.oneplus.hardware.lmvibrator</name>
-        <version>1.0</version>
-        <interface>
-            <name>ILinearMotorVibrator</name>
             <instance>default</instance>
         </interface>
     </hal>

@@ -180,7 +180,7 @@
     </hal>
     <hal format="hidl" optional="false">
         <name>android.hardware.keymaster</name>
-        <version>3.0</version>
+        <version>4.0-1</version>
         <interface>
             <name>IKeymasterDevice</name>
             <instance>default</instance>
@@ -389,10 +389,6 @@
         </config>
         <config>
             <key>CONFIG_ANDROID_BINDER_IPC</key>
-            <value type="tristate">y</value>
-        </config>
-        <config>
-            <key>CONFIG_ANDROID_LOW_MEMORY_KILLER</key>
             <value type="tristate">y</value>
         </config>
         <config>
@@ -1027,10 +1023,6 @@
         </config>
         <config>
             <key>CONFIG_ANDROID_BINDER_IPC</key>
-            <value type="tristate">y</value>
-        </config>
-        <config>
-            <key>CONFIG_ANDROID_LOW_MEMORY_KILLER</key>
             <value type="tristate">y</value>
         </config>
         <config>
@@ -1689,10 +1681,6 @@
         </config>
         <config>
             <key>CONFIG_ANDROID_BINDER_IPC</key>
-            <value type="tristate">y</value>
-        </config>
-        <config>
-            <key>CONFIG_ANDROID_LOW_MEMORY_KILLER</key>
             <value type="tristate">y</value>
         </config>
         <config>

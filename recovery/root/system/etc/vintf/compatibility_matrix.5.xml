@@ -284,19 +284,10 @@
     </hal>
     <hal format="hidl" optional="false">
         <name>android.hardware.keymaster</name>
-        <version>3.0</version>
         <version>4.0-1</version>
         <interface>
             <name>IKeymasterDevice</name>
             <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>android.hardware.keymaster</name>
-        <version>4.0-1</version>
-        <interface>
-            <name>IKeymasterDevice</name>
-            <instance>strongbox</instance>
         </interface>
     </hal>
     <hal format="aidl" optional="true">
@@ -550,14 +541,6 @@
         <version>1.0-3</version>
         <interface>
             <name>ISupplicant</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.oneplus.hardware.lmvibrator</name>
-        <version>1.0</version>
-        <interface>
-            <name>ILinearMotorVibrator</name>
             <instance>default</instance>
         </interface>
     </hal>
@@ -1561,10 +1544,6 @@
         <config>
             <key>CONFIG_XFRM_USER</key>
             <value type="tristate">y</value>
-        </config>
-        <config>
-            <key>CONFIG_DEBUG_FS</key>
-            <value type="tristate">n</value>
         </config>
     </kernel>
     <kernel version="4.14.180" level="5">
@@ -2719,10 +2698,6 @@
         <config>
             <key>CONFIG_XFRM_USER</key>
             <value type="tristate">y</value>
-        </config>
-        <config>
-            <key>CONFIG_DEBUG_FS</key>
-            <value type="tristate">n</value>
         </config>
     </kernel>
     <kernel version="4.19.110" level="5">
@@ -3873,10 +3848,6 @@
         <config>
             <key>CONFIG_XFRM_USER</key>
             <value type="tristate">y</value>
-        </config>
-        <config>
-            <key>CONFIG_DEBUG_FS</key>
-            <value type="tristate">n</value>
         </config>
     </kernel>
     <kernel version="5.4.42" level="5">
